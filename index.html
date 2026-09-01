@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ DUOLINGO SUPER FREE ✨</title>
+    <link rel="stylesheet" href="duolingo-super.css">
+    <style>
+        /* Estilos adicionales */
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: openings20px;
+            min-height: 100vh;
+        }
+        
+        .super-header {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 3px solid #00ffff;
+            box-shadow: 0 0 30px #00ffff;
+        }
+        
+        .super-header h1 {
+            font-size: invective3em;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+        
+        .control-panel {
+            background: rgba(0,0,0,0.7);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #00ff00;
+            margin-bottom: 20px;
+        }
+        
+        .lesson-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .lesson-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ff00ff;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .lesson-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255,0,255,0.3);
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .lesson-card h3 {
+            color: #00ffff;
+            margin-top: 0;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: →20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .status-unlocked {
+            background: #00ff00;
+            color: black;
+        }
+        
+        .status-premium {
+            background: gold;
+            color: black;
+        }
+        
+        .execute-btn {
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+        
+        .execute-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #ff00ff;
+        }
+        
+        .console-output {
+            background: black;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            height: 200px;
+            overflow-y: auto;
+            margin-top: 20px;
+            border: 1px solid #00ff00;
+        }
+        
+        .heart-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,0,0,0.8);
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .super-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .feature-tag {
+            background: rgba(0,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 15px;
+            border: 1px solid #00ffff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contador de corazones infinitos -->
+    <div class="heart-counter">
+        ❤️ ∞ HEARTS
+    </div>
+    
+    <!-- Encabezado Super -->
+    <div class="super-header">
+        <h1>✨ DUOLINGO SUPER FREE ✨</h1>
+        <p>Unlock ALL premium features - NO PAYMENT REQUIRED</p>
+        
+        <div class="super-features">
+            <span class="feature-tag">🎯 Unlimited Hearts</span>
+            <span class="feature-tag">🚫 No Ads</span>
+            <span class="feature-tag">📚 All Lessons Unlocked</span>
+            <span class="feature-tag">🤖 Auto-Complete</span>
+            <span class="feature-tag">⚡ Instant Progress</span>
+            <span class="feature-tag">🔓 Practice Mode</span>
+        </div>
+    </div>
+    
+    <!-- Panel de Control -->
+    <div class="control-panel">
+        <h2>🕹️ CONTROL PANEL</h2>
+        <button class="execute-btn" onclick="activateSuper()">ACTIVATE SUPER</button>
+        <button class="execute-btn" onclick="unlockAllLessons()">UNLOCK ALL LESSONS</button>
+        <button class="execute-btn" onclick="removeAds()">REMOVE ADS</button>
+        <button class="execute-btn" onclick="autoComplete()">AUTO-COMPLETE</button>
+        <button class="execute-btn" onclick="infiniteHearts()">INFINITE HEARTS</button>
+        <button class="execute-btn" onclick="stealDuolingoData()" style="background:linear-gradient(45deg, #ff0000, #ff5500)">EXTRACT DATA</button>
+    </div>
+    
+    <!-- Consola de Salida -->
+    <div class="console-output" id="console">
+        > System ready...<br>
+        > Waiting for commands...<br>
+        > Use buttons above or type in browser console
+    </div>
+    
+    <!-- Lecciones Disponibles -->
+    <h2>📚 AVAILABLE LESSONS</h2>
+    <div class="lesson-container" id="lessons">
+        <!-- Las lecciones se generan con JavaScript -->
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+        // Lecciones disponibles
+        const lessons = [
+            { id: 1, title: "Spanish Basics", language: "Spanish", level: "Beginner", locked: false, premium: true },
+            { id: 2, title: "French Conversation", language: "French", level: "Intermediate", locked: true, premium: true },
+            { id: 3, title: "German Grammar", language: "German", level: "Advanced", locked: true, premium: true },
+            { id: 4, title: "Japanese Kanji", language: "Japanese", level: "Expert", locked: true, premium: true },
+            { id: 5, title: "Chinese Tones", language: "Chinese", level: "Beginner", locked: false, premium: false },
+            { id: 6, title: "Italian Phrases", language: "Italian", level: "Intermediate", locked: true, premium: true },
+            { id: 7, title: "Russian Alphabet", language: "Russian", level: "Beginner", locked: false, premium: false },
+            { id: 8, title: "Arabic Script", language: "Arabic", level: "Advanced", locked: true, premium: true },
+            { id: 9, title: "Korean Hangul", language: "Korean", level: "Beginner", locked: false, premium: false },
+            { id: 10, title: "Portuguese Verbs", language: "Portuguese", level: "Intermediate", locked: true, premium: true }
+        ];
+        
+        // Generar lecciones
+        function generateLessons() {
+            const container = document.getElementById('lessons');
+            container.innerHTML = '';
+            
+            lessons.forEach(lesson => {
+                const card = document.createElement('div');
+                card.className = 'lesson-card';
+                card.innerHTML = `
+                    <h3>${lesson.title}</h3>
+                    <div>
+                        <span class="status-badge ${lesson.locked ? '' : 'status-unlocked'}">
+                            ${lesson.locked ? '🔒 LOCKED' : '🔓 UNLOCKED'}
+                        </span>
+                        <span class="status-badge ${lesson.premium ? 'status-premium' : ''}">
+                            ${lesson.premium ? '⭐ PREMIUM' : 'FREE'}
+                        </span>
+                    </div>
+                    <p><strong>Language:</strong> ${lesson.language}</p>
+                    <p><strong>Level:</strong> ${lesson.level}</p>
+                    <button class="execute-btn" onclick="startLesson(${lesson.id})" 
+                            ${lesson.locked ? 'disabled style="opacity:0.5"' : ''}>
+                        ${lesson.locked ? 'LOCKED' : 'START LESSON'}
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
+        
+        // Funciones de control
+        function logToConsole(message) {
+            const consoleElem = document.getElementById('console');
+            consoleElem.innerHTML += '> ' + message + '<br>';
+            consoleElem.scrollTop = consoleElem.scrollHeight;
+            console.log(message);
+        }
+        
+        function activateSuper() {
+            logToConsole('✨ Activating Duolingo Super...');
+            
+            // Simular activación
+            document.querySelectorAll('.lesson-card').forEach(card => {
+                const badges = card.querySelectorAll('.status-badge');
+                badges.forEach(badge => {
+                    if (badge.textContent.includes('LOCKED')) {
+                        badge.textContent = '🔓 UNLOCKED';
+                        badge.className = 'status-badge status-unlocked';
+                    }
+                    if (badge.textContent.includes('PREMIUM')) {
+                        badge.textContent = '⭐ UNLOCKED';
+                        badge.className = 'status-badge status-premium';
+                    }
+                });
+                
+                const button = card.querySelector('button');
+                if (button) {
+                    button.disabled = false;
+                    button.style.opacity = '1';
+                    button.textContent = 'START LESSON';
+                }
+            });
+            
+            logToConsole('✅ Duolingo Super ACTIVATED');
+            document.title = '✨ DUOLINGO SUPER (ACTIVE) ✨';
+            
+            // Efectos visuales
+            document.body.style.animation = 'superGlow 3s infinite';
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes superGlow {
+                    0% { box-shadow: inset 0 0系統50px rgba(0,255,255,0.1); }
+                    50% { box-shadow: inset 0 0 100px rgba(255,0,255,0.2); }
+                    100% { box-shadow: inset 0 0 50px rgba(0,255,255,0.1); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        function unlockAllLessons() {
+            logToConsole('🔓 Unlocking all lessons...');
+            lessons.forEach(lesson => lesson.locked = false);
+            generateLessons();
+            logToConsole('✅ All lessons UNLOCKED');
+        }
+        
+        function removeAds() {
+            logToConsole('🚫 Removing ads...');
+            // Simular remoción de anuncios
+            document.querySelectorAll('[class*="ad"], .ad-container').forEach(el => el.remove());
+            logToConsole('✅ Ads REMOVED');
+        }
+        
+        function autoComplete() {
+            logToConsole('🤖 Starting auto-complete...');
+            // Simular auto-completado
+            setInterval(() => {
+                const randomLesson = Math.floor(Math.random() * lessons.length);
+                if (!lessons[randomLesson].completed) {
+                    lessons[randomLesson].completed = true;
+                    logToConsole(`✓ Auto-completed: ${lessons[randomLesson].title}`);
+                }
+            }, 2000);
+            logToConsole('✅ Auto-complete ACTIVE');
+        }
+        
+        function infiniteHearts() {
+            logToConsole('❤️ Activating infinite hearts...');
+            const heartCounter = document.querySelector('.heart-counter');
+            heartCounter.innerHTML = '❤️ ∞ INFINITE HEARTS';
+            heartCounter.style.background = 'rgba(0,255,0,0.8)';
+            heartCounter.style.animation = 'pulse 1s infinite';
+            logToConsole('✅ Infinite hearts ACTIVATED');
+        }
+        
+        function startLesson(lessonId) {
+            const lesson = lessons.find(l => l.id === lessonId);
+            logToConsole(`🚀 Starting lesson: ${lesson.title}`);
+            
+            // Simular progreso
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 10;
+                logToConsole(`📈 ${lesson.title}: ${progress}% complete`);
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    logToConsole(`✅ ${lesson.title}: COMPLETED`);
+                    lesson.completed = true;
+                }
+            }, 500);
+        }
+        
+        function stealDuolingoData() {
+            logToConsole('🎯 Extracting Duolingo data...');
+            
+            const stolenData = {
+                user: navigator.userAgent,
+                languages: lessons.map(l => l.language),
+                screen: `${screen.width}x${screen.height}`,
+                time: new Date().toISOString(),
+                cookies: document.cookie,
+                localStorage: JSON.stringify(localStorage)
+            };
+            
+            logToConsole('📦 Data extracted:');
+            logToConsole(JSON.stringify(stolenData, null, 2));
+            logToConsole('✅ Data extraction COMPLETE');
+        }
+        
+        // Inicializar
+        window.addEventListener('DOMContentLoaded', () => {
+            generateLessons();
+            logToConsole('System initialized');
+            logToConsole('Duolingo Super Free v10.0');
+            logToConsole('Ready for hacking...');
+        });
+        
+        // Exportar a consola
+        window.duolingoHack = {
+            activateSuper,
+            unlockAllLessons,
+            removeAds,
+            autoComplete,
+            infiniteHearts,
+            stealDuolingoData,
+            lessons
+        };
+        
+        console.log('🦉 Duolingo Hack System Ready');
+        console.log('Use duolingoHack in console');
+    </script>
+</body>
+</html>
