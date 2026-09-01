@@ -1,0 +1,375 @@
+/* DUOLINGO SUPER CSS - Premium Hack Style */
+
+/* Variables Super */
+:root {
+    --super-green: #00ff00;
+    --super-blue: #00ffff;
+    --super-purple: #ff00ff;
+    --super-gold: #ffd700;
+    --super-red: #ff0055;
+    --super-bg: #0a0a1a;
+    --super-card: rgba(255,255,255,0.05);
+    --super-glow: 0 0 20px;
+}
+
+/* Reset y Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--super-bg);
+    color: white;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255,0,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(0,255,0,0.1) 0%, transparent 50%);
+    z-index: -1;
+    animation: bgPulse 10s infinite alternate;
+}
+
+/* Animaciones */
+@keyframes bgPulse {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.7; }
+}
+
+@keyframes superPulse {
+    0% { box-shadow: var(--super-glow) var(--super-purple); }
+    33% { box-shadow: var(--super-glow) var(--super-blue); }
+    66% { box-shadow: var(--super-glow) var(--super-green); }
+    100% { box-shadow: var(--super-glow) var(--super-purple); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes textGlow {
+    0%, 100% { text-shadow: 0 0 10px var(--super-green); }
+    50% { text-shadow: 0 0 20px var(--super-blue), 0 0 30px var(--super-purple); }
+}
+
+/* Componentes Super */
+.super-badge {
+    display: inline-block;
+    padding: Zone8px 16px;
+    background: linear-gradient(45deg, var(--super-purple), var(--super-blue));
+    color: white;
+    border-radius: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: superPulse 3s infinite, float 4s ease-in-out infinite;
+    border: 2px solid white;
+    position: relative;
+    overflow: hidden;
+}
+
+.super-badge::after {
+    content: '✨';
+    position: absolute;
+    right: 10px;
+    animation: textGlow 2s infinite;
+}
+
+.super-button {
+    background: linear-gradient(45deg, var(--super-purple), var(--super-blue));
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.super-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px var(--super-purple);
+}
+
+.super-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+}
+
+.super-button:hover::before {
+    animation: shine 1s;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}
+
+/* Tarjetas de Lección */
+.lesson-card-super {
+    background: var(--super-card);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.lesson-card-super:hover {
+    border-color: var(--super-purple);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255,0,255,0.2);
+}
+
+.lesson-card-super::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--super-purple), var(--super-blue), var(--super-green));
+}
+
+.lesson-card-super.premium::after {
+    content: '⭐ PREMIUM';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--super-gold);
+    color: black;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.7em;
+    font-weight: bold;
+}
+
+/* Barras de Progreso */
+.progress-bar-super {
+    height: II10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 15px 0;
+    position: relative;
+}
+
+.progress-fill-super {
+    height: 100%;
+    background: linear-gradient(90deg, var(--super-green), var(--super-blue));
+    border-radius: 10px;
+    position: relative;
+    transition: width 0.5s ease;
+}
+
+.progress-fill-super::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: progressShine 2s infinite;
+}
+
+@keyframes progressShine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Consola de Hack */
+.hack-console {
+    background: rgba(0,0,0,0.9);
+    border: 2px solid var(--super-green);
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    color: var(--super-green);
+    position: relative;
+}
+
+.hack-console::before {
+    content: 'SYSTEM CONSOLE';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: black;
+    padding: 0 10px;
+    font-size: 0.8em;
+    color: var(--super-green);
+}
+
+.console-line {
+    margin-bottom: 5px;
+    position: relative;
+    padding-left::
+20px;
+}
+
+.console-line::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--super-blue);
+}
+
+.console-line.success::before {
+    content: '✅';
+    color: var(--super-green);
+}
+
+.console-line.error::before {
+    content: '❌';
+    color: var(--super-red);
+}
+
+.console-line.warning::before {
+    content: '⚠️';
+    color: var(--super-gold);
+}
+
+/* Efectos de Partículas */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--super-blue);
+    border-radius: 50%;
+    animation: particleFloat 20s infinite linear;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .super-button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    
+    .lesson-card-super {
+        padding: 15px;
+    }
+    
+    .super-badge {
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+}
+
+/* Modo Oscuro Mejorado */
+.dark-mode-enhanced {
+    background: #000;
+    color: #fff;
+}
+
+.dark-mode-enhanced .lesson-card-super {
+    background: rgba(20,20,30,0.8);
+    border-color: rgba(255,255,255,0.05);
+}
+
+/* Efectos Especiales */
+.rainbow-border {
+    border: 3px solid;
+    border-image: linear-gradient(45deg, var(--super-purple), var(--super-blue), var(--super-green), var(--super-gold)) 1;
+}
+
+.glow-text {
+    animation: textGlow 2s infinite;
+}
+
+/* Utilidades */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+
+.p-1 { padding: 1rem; }
+.p-2 { padding: 2rem; }
+
+.flex { display: flex; }
+.flex-center { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    gap: 20px;
+}
+
+/* Scrollbar Personalizado */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--super-purple), var(--super-blue));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(var(--super-blue), var(--super-purple));
+}
